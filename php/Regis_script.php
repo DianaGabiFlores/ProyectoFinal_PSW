@@ -13,20 +13,14 @@ if(isset($_SESSION['repetido'])){
     </script><?php
 }elseif(isset($_SESSION['insertar'])){
     ?><script>
-        Swal.fire({
-        icon: "success",
-        title: "Usuario creado",
-        width: 600,
-        padding: "3em",
-        color: "black",
-        background: "#fff url(../images/trees.png)",
-        backdrop: `
-            rgba(247,140,162,0.2)
-            url("imagenes/Dulces3.gif")
-            left top
-            no-repeat
-            `
-        });<?php
+        swal.fire({
+            icon: "success",
+            title: "Usuario creado",
+        }).then((result) => {
+            if (result.isConfirmed) {
+                location. assign('../index.php')
+            }});
+    </script><?php
 }elseif(isset($_SESSION['cont'])){
     ?><script>
         swal.fire({

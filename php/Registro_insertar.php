@@ -33,8 +33,8 @@
             }
             $encrypted_data = openssl_encrypt($password, $cipher, $encryption_key, 0, $iv);
 
-            $sql = 'select * from Usuarios';//hacemos cadena con la sentencia mysql que consulta todo el contenido de la tabla
-            // echo $sql;
+            $sql = 'select * from Usuarios;';//hacemos cadena con la sentencia mysql que consulta todo el contenido de la tabla
+            $flag = true;
             $resultado = $conexion -> query($sql); //aplicamos sentencia
             if ($resultado -> num_rows){ //si la consulta genera registros
                 while( $fila = $resultado -> fetch_assoc()){ //recorremos los registros obtenidos de la tabla
@@ -46,7 +46,7 @@
                   } 
                 }
             }
-            if($flag && !isset($_SESSION['cont'])){     
+            if($flag && !isset($_SESSION['cont'])){  
               $sql = "INSERT INTO Usuarios(usuario, nombre, correo, seguridad, contra, administrador) VALUES('$usuario','$nombre','$email','$seguridad', '$encrypted_data', 0)";
               $conexion->query($sql);
               if ($conexion->affected_rows >= 1){ 
