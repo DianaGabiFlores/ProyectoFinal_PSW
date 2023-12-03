@@ -6,6 +6,7 @@
 <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <link rel="stylesheet" href="../css/style_altas_mod.css">
+<link rel="icon" type="image/png" href="../imagenes/Icon2.png" />
 <script src="https://kit.fontawesome.com/d60c975bf8.js" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <title>Modificaciones | CandyCraze</title>
