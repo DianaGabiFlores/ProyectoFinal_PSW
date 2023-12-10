@@ -1,353 +1,570 @@
 /* Acomodo de los articulos */
 .acomodoart {
-    display: grid;
-    grid-gap: 20px;
-    grid-column: 3;
-    grid-template-columns: auto auto 2fr auto auto auto;
-    justify-content: space-between;
-    
-    margin: 40px 70px;
-  }
+  display: grid;
+  grid-gap: 20px;
+  grid-column: 3;
+  grid-template-columns: auto auto 2fr auto auto auto;
+  justify-content: space-between;
+  margin: 10px 70px;
+}
 
-  div.acomodoart{
-    background-color: white;
-    /* box-shadow: rgb(201, 201, 201) 0px 1px 4px, rgb(201, 201, 201) 0px 0px 0px 3px;
+div.acomodoart {
+  background-color: white;
+  /* box-shadow: rgb(201, 201, 201) 0px 1px 4px, rgb(201, 201, 201) 0px 0px 0px 3px;
     border-radius: 5px; */
 
-    border: 2px solid #e5e5e5;
-    box-shadow: 4px 4px #979696;
-    border-radius: 5px;
+  border: 2px solid #e5e5e5;
+  box-shadow: 4px 4px #979696;
+  border-radius: 5px;
+}
+
+.acomodochk div {
+  display: flex;
+  justify-content: center;
+
+  padding-top: 25px;
+  margin: 25px;
+}
+
+div.acomodobtd {
+  display: flex;
+  justify-content: center;
+
+  padding-top: 15px;
+  margin: 25px;
+}
+
+.acomodocant div {
+  text-align: center;
+  padding-top: 10px;
+  margin: 25px;
+}
+
+.acomodoindpre div {
+  padding-top: 10px;
+  padding-right: 20px;
+  margin: 25px;
+}
+
+.acomodoart img {
+  /* width: 95px; */
+  height: 95px;
+  margin: 25px;
+}
+
+.img_acomodo {
+  width: 95px;
+  display: flex;
+  justify-content: center;
+}
+
+.acomodoart h3 {
+  font-size: large;
+}
+
+div.acomododesc {
+  padding-top: 10px;
+  margin: 25px;
+}
+
+/* Diseño del checkbox */
+.checkbox-wrapper input[type="checkbox"] {
+  visibility: hidden;
+  display: none;
+}
+
+.checkbox-wrapper *,
+.checkbox-wrapper ::after,
+.checkbox-wrapper ::before {
+  box-sizing: border-box;
+  user-select: none;
+}
+
+.checkbox-wrapper {
+  position: relative;
+  display: block;
+  overflow: hidden;
+}
+
+.checkbox-wrapper .label {
+  cursor: pointer;
+}
+
+.checkbox-wrapper .check {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  opacity: 0;
+}
+
+.checkbox-wrapper .label svg {
+  vertical-align: middle;
+}
+
+.checkbox-wrapper .path1 {
+  stroke-dasharray: 400;
+  stroke-dashoffset: 400;
+  transition: 0.5s stroke-dashoffset;
+  opacity: 0;
+}
+
+.checkbox-wrapper .check:checked + label svg g path {
+  stroke-dashoffset: 0;
+  opacity: 1;
+}
+
+/* Diseño del div del acumulado y boton para pagar */
+.acumulado {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(2, 4fr);
+  justify-content: space-between;
+  margin: 0 30px;
+}
+
+div.acumulado {
+  background-color: white;
+  border: 2px solid #d8006c41;
+  box-shadow: 4px 4px #d8006c;
+  border-radius: 5px;
+  position: fixed;
+  width: 80%;
+  height: auto;
+  top: 85%;
+  left: 48%;
+  transform: translate(-50%, -50%);
+
+}
+
+.acomodocom div {
+  display: flex;
+  justify-content: end;
+  padding-top: 20px;
+  padding-right: 30px;
+}
+
+.acomodoprecio div {
+  padding-top: 10px;
+  padding-left: 30px;
+}
+
+.precio_acumulado p {
+  font-size: xx-large;
+}
+
+.precio_acumulado h3 {
+  font-size: medium;
+}
+
+/* Diseño Boton de comprar */
+.CartBtn {
+  width: 140px;
+  height: 40px;
+  border-radius: 12px;
+  border: none;
+  background-color: #d8006c;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition-duration: 0.5s;
+  overflow: hidden;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.103);
+  position: relative;
+}
+
+.IconContainer {
+  position: absolute;
+  left: -50px;
+  width: 30px;
+  height: 30px;
+  background-color: transparent;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  z-index: 2;
+  transition-duration: 0.5s;
+}
+
+.icon {
+  border-radius: 1px;
+}
+
+.text {
+  height: 100%;
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  z-index: 1;
+  transition-duration: 0.5s;
+  font-size: 1.04em;
+  font-weight: 600;
+  margin-top: 18px;
+}
+
+.CartBtn:hover .IconContainer {
+  transform: translateX(58px);
+  border-radius: 40px;
+  transition-duration: 0.5s;
+}
+
+.CartBtn:hover .text {
+  transform: translate(10px, 0px);
+  transition-duration: 0.5s;
+}
+
+.CartBtn:active {
+  transform: scale(0.95);
+  transition-duration: 0.5s;
+}
+
+.section_Carrito {
+  margin-top: 40px;
+  margin-bottom: 200px;
+}
+
+.linkcarrito {
+  color: #d8006c;
+}
+.linkcarrito:hover {
+  color: #f78ca2;
+}
+
+/* Estilo de boton de eliminar */
+.deleteboton {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #d8006c;
+  border: none;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.164);
+  cursor: pointer;
+  transition-duration: 0.3s;
+  overflow: hidden;
+  position: relative;
+}
+
+.svgIcon {
+  width: 12px;
+  transition-duration: 0.3s;
+}
+
+.svgIcon path {
+  fill: white;
+}
+
+.deleteboton:hover {
+  width: 140px;
+  border-radius: 50px;
+  transition-duration: 0.3s;
+  background-color: rgb(255, 69, 69);
+  align-items: center;
+}
+
+.deleteboton:hover .svgIcon {
+  width: 50px;
+  transition-duration: 0.3s;
+  transform: translateY(60%);
+}
+
+.deleteboton::before {
+  position: absolute;
+  top: -20px;
+  content: "Eliminar";
+  color: white;
+  transition-duration: 0.3s;
+  font-size: 2px;
+}
+
+.deleteboton:hover::before {
+  font-size: 13px;
+  opacity: 1;
+  transform: translateY(30px);
+  transition-duration: 0.3s;
+}
+
+/* RESPONSIVE DESIGN */
+
+@media screen and (max-width: 995px) {
+  .acomodoart {
+    grid-template-columns: repeat(3, 1fr); /* 3 columnas */
+    grid-template-rows: repeat(2, auto); /* 2 filas */
+    margin: 10px 70px;
+    padding: 20px;
+    grid-row-gap: 0;
   }
 
-  .acomodochk div{
-    display: flex;
-    justify-content: center;
-
-    padding-top: 25px;
-    margin: 25px;
-  }
-
-  div.acomodobtd {
-    display: flex;
-    justify-content: center;
-
-    padding-top: 15px;
-    margin: 25px;
-  }
-
-  .acomodocant div{
+  .acomodochk div,
+  .acomodocant,
+  .acomodoindpre,
+  .acomodobtd {
     text-align: center;
-    padding-top: 10px;
-    margin: 25px;
   }
 
-  .acomodoindpre div{
-    padding-top: 27px;
-    padding-right: 20px;
-    margin: 25px;
+  .acomododesc {
+    text-align: justify;
   }
 
-  .acomodoart img{
-    /* width: 95px; */
-    height: 95px;
-    margin: 25px;
+  .acomodochk div {
+    grid-column: 1; /* Checkbox en la primera columna */
+    grid-row: 1; /* En la primera fila */
   }
 
-  .img_acomodo{
-    width: 95px;
+  .img_acomodo {
+    grid-column: 2; /* Imagen en la segunda columna */
+    grid-row: 1; /* En la primera fila */
+    height: 100%;
+    margin: 0 auto;
     display: flex;
-    justify-content: center;
+    align-items: center;
   }
 
-  .acomodoart h3{
-    font-size: large;
+  .acomododesc {
+    grid-column: 3; /* Descripción en la tercera columna */
+    grid-row: 1; /* En la primera fila */
   }
 
-  div.acomododesc {
-    padding-top: 10px;
-    margin: 25px;
+  .acomodocant {
+    grid-column: 1; /* Cantidad en la primera columna */
+    grid-row: 2; /* En la segunda fila */
   }
 
-
-  /* Diseño del checkbox */
-  .checkbox-wrapper input[type="checkbox"] {
-    visibility: hidden;
-    display: none;
-  }
-  
-  .checkbox-wrapper *,
-    .checkbox-wrapper ::after,
-    .checkbox-wrapper ::before {
-    box-sizing: border-box;
-    user-select: none;
-  }
-  
-  .checkbox-wrapper {
-    position: relative;
-    display: block;
-    overflow: hidden;
-  }
-  
-  .checkbox-wrapper .label {
-    cursor: pointer;
-  }
-  
-  .checkbox-wrapper .check {
-    width: 50px;
-    height: 50px;
-    position: absolute;
-    opacity: 0;
-  }
-  
-  .checkbox-wrapper .label svg {
-    vertical-align: middle;
-  }
-  
-  .checkbox-wrapper .path1 {
-    stroke-dasharray: 400;
-    stroke-dashoffset: 400;
-    transition: .5s stroke-dashoffset;
-    opacity: 0;
-  }
-  
-  .checkbox-wrapper .check:checked + label svg g path {
-    stroke-dashoffset: 0;
-    opacity: 1;
+  .acomodoindpre {
+    grid-column: 2; /* Precio en la segunda columna */
+    grid-row: 2; /* En la segunda fila */
   }
 
+  .acomodobtd {
+    grid-column: 3; /* Eliminar en la tercera columna */
+    grid-row: 2; /* En la segunda fila */
+  }
 
-
-  /* Diseño del div del acumulado y boton para pagar */
-  .acumulado {
-    display: grid;
-    gap: 20px;
-    grid-template-columns: repeat(2, 4fr);
-    justify-content: space-between;
-    margin: 0 30px;
+  .img_acomodo img {
+    padding: 0;
+    margin: 0;
+    object-fit: cover;
   }
 
   div.acumulado {
-    background-color: white;
-    /* box-shadow: rgba(240, 46, 170, 0.4) 0px 5px, rgba(240, 46, 170, 0.3) 0px 10px, rgba(240, 46, 170, 0.2) 0px 15px, rgba(240, 46, 170, 0.1) 0px 20px, rgba(240, 46, 170, 0.05) 0px 25px; */
+    left: 46%;
+  }
+}
 
-    border: 2px solid #d8006c41;
-    box-shadow: 4px 4px #D8006C;
-    border-radius: 5px;
-
-
-    position: fixed;
-    width: 80%;
-    height: auto;
-
-    top: 90%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-
-
+@media screen and (max-width: 805px) {
+  .deleteboton:hover {
+    width: 100px;
   }
 
+  div.acumulado {
+    left: 45.5%;
+  }
+}
 
-  .acomodocom div{
-      display: flex;
-      justify-content: end;
-
-      padding-top: 20px;
-      padding-right: 30px;
+@media screen and (max-width: 685px) {
+  .deleteboton:hover {
+    width: 90px;
   }
 
+  div.acumulado {
+    left: 45.5%;
+  }
+}
 
-  .acomodoprecio div{
-    padding-top: 10px;
-    padding-left: 30px;
+@media screen and (max-width: 655px) {
+  .acomodoart {
+    grid-template-columns: repeat(2, 1fr); /* 2 columnas */
+    grid-template-rows: repeat(3, auto); /* 3 filas */
+    margin: 10px 30px;
+    padding: 10px;
+    grid-row-gap: 10px; /* Espaciado entre filas */
   }
 
-  .precio_acumulado p{
-    font-size:xx-large;
-
-    
-  }
-
-  .precio_acumulado h3{
-    font-size:medium;
-  }
-
-
-  /* Diseño Boton de comprar */
-  .fancy {
-    background-color: transparent;
-    border: 2px solid #D8006C;
-    border-radius: 0;
-    box-sizing: border-box;
-    color: #fff;
-    cursor: pointer;
-    display: inline-block;
-    float: right;
-    font-weight: 700;
-    letter-spacing: 0.05em;
-    margin: 0;
-    outline: none;
-    overflow: visible;
-    padding: 1.25em 2em;
-    position: relative;
+  .acomodochk div,
+  .acomodocant,
+  .acomodoindpre,
+  .acomodobtd {
     text-align: center;
-    text-decoration: none;
-    text-transform: none;
-    transition: all 0.3s ease-in-out;
-    user-select: none;
-    font-size: 13px;
-   }
-   
-   .fancy::before {
-    content: " ";
-    width: 1.5625rem;
-    height: 2px;
-    background: #D8006C;
-    top: 50%;
-    left: 1.5em;
-    position: absolute;
-    transform: translateY(-50%);
-    transform-origin: center;
-    transition: background 0.3s linear, width 0.3s linear;
-   }
-   
-   .fancy .text {
-    font-size: 1.125em;
-    line-height: 1.33333em;
-    padding-left: 2em;
-    display: block;
-    text-align: left;
-    transition: all 0.3s ease-in-out;
-    text-transform: uppercase;
-    text-decoration: none;
-    color: black;
-   }
-   
-   .fancy .top-key {
-    height: 2px;
-    width: 1.5625rem;
-    top: -2px;
-    left: 0.625rem;
-    position: absolute;
-    background: #e8e8e8;
-    transition: width 0.5s ease-out, left 0.3s ease-out;
-   }
-   
-   .fancy .bottom-key-1 {
-    height: 2px;
-    width: 1.5625rem;
-    right: 1.875rem;
-    bottom: -2px;
-    position: absolute;
-    background: #e8e8e8;
-    transition: width 0.5s ease-out, right 0.3s ease-out;
-   }
-   
-   .fancy .bottom-key-2 {
-    height: 2px;
-    width: 0.625rem;
-    right: 0.625rem;
-    bottom: -2px;
-    position: absolute;
-    background: #e8e8e8;
-    transition: width 0.5s ease-out, right 0.3s ease-out;
-   }
-   
-   .fancy:hover {
-    color: white;
-    background: #D8006C;
-   }
-   
-   .fancy:hover::before {
-    width: 0.9375rem;
-    background: white;
-   }
-   
-   .fancy:hover .text {
-    color: white;
-    padding-left: 1.5em;
-   }
-   
-   .fancy:hover .top-key {
-    left: -2px;
-    width: 0px;
-   }
-   
-   .fancy:hover .bottom-key-1,
-    .fancy:hover .bottom-key-2 {
-    right: 0;
-    width: 0;
-   }
+    padding: 5px;
+  }
 
-   .section_Carrito{
-    margin-top: 40px;
-    margin-bottom: 200px;
-   }
+  .acomododesc {
+    text-align: justify;
+  }
 
-   .linkcarrito{
-    color: #D8006C;
-   }
-   .linkcarrito:hover{
-    color: #F78CA2;
-   }
+  .acomodochk div {
+    grid-column: 1; /* Checkbox en la primera columna */
+    grid-row: 1; /* En la primera fila */
+  }
 
-
-   /* Estilo de boton de eliminar */
-   .deleteboton {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background-color: #D8006C;
-    border: none;
-    font-weight: 600;
+  .img_acomodo {
+    grid-column: 2; /* Imagen en la segunda columna */
+    grid-row: 1; /* En la primera fila */
+    height: 100%;
+    margin: 0 auto;
     display: flex;
     align-items: center;
-    justify-content: center;
-    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.164);
-    cursor: pointer;
-    transition-duration: .3s;
-    overflow: hidden;
-    position: relative;
   }
-  
-  .svgIcon {
-    width: 12px;
-    transition-duration: .3s;
+
+  .acomododesc {
+    grid-column: 1; /* Descripción en la primera columna */
+    grid-row: 2; /* En la segunda fila */
   }
-  
-  .svgIcon path {
-    fill: white;
+
+  .acomodocant {
+    grid-column: 2; /* Cantidad en la segunda columna */
+    grid-row: 2; /* En la segunda fila */
   }
-  
+
+  .acomodoindpre {
+    grid-column: 1; /* Precio en la primera columna */
+    grid-row: 3; /* En la tercera fila */
+  }
+
+  .acomodobtd {
+    grid-column: 2; /* Eliminar en la segunda columna */
+    grid-row: 3; /* En la tercera fila */
+  }
+
+  .img_acomodo img {
+    padding: 0;
+    margin: 0;
+    object-fit: cover;
+  }
+
+  div.acumulado {
+    left: 45%;
+  }
+
   .deleteboton:hover {
-    width: 140px;
-    border-radius: 50px;
-    transition-duration: .3s;
-    background-color: rgb(255, 69, 69);
+    width: 130px;
+  }
+}
+
+@media screen and (max-width: 470px) {
+  .precio_acumulado h3 {
+    font-size: 15px;
+  }
+
+  .precio_acumulado .total {
+    font-size: 26px;
+  }
+}
+
+@media screen and (max-width: 405px) {
+  .precio_acumulado h3 {
+    font-size: 14px;
+  }
+
+  .precio_acumulado .total {
+    font-size: 22px;
+  }
+
+}
+
+@media screen and (max-width: 400px) {
+  .deleteboton:hover {
+    width: 150px;
+  }
+
+  .acomodoart {
+    grid-template-columns: 1fr; /* Cambia a una sola columna */
+    grid-template-rows: auto; /* Restaura las filas automáticas */
+    margin: 10px 20px;
+    padding: 10px;
+    grid-row-gap: 10px; /* Espaciado entre filas */
+  }
+
+  .acomodochk div,
+  .acomodocant,
+  .acomodoindpre,
+  .acomododesc,
+  .acomodobtd {
+    text-align: center;
+  }
+
+  .acomodochk div,
+  .img_acomodo {
+    grid-column: 1; /* Checkbox e imagen en la primera columna */
+    grid-row: auto; /* Restaura la posición automática */
+    height: 100%;
+    margin: 0 auto;
+    display: flex;
     align-items: center;
   }
-  
-  .deleteboton:hover .svgIcon {
-    width: 50px;
-    transition-duration: .3s;
-    transform: translateY(60%);
-  }
-  
-  .deleteboton::before {
-    position: absolute;
-    top: -20px;
-    content: "Delete";
-    color: white;
-    transition-duration: .3s;
-    font-size: 2px;
-  }
-  
-  .deleteboton:hover::before {
-    font-size: 13px;
-    opacity: 1;
-    transform: translateY(30px);
-    transition-duration: .3s;
+
+  .acomododesc,
+  .acomodocant,
+  .acomodoindpre,
+  .acomodobtd {
+    grid-column: 1; /* Todos los demás elementos en la primera columna */
+    grid-row: auto; /* Restaura la posición automática */
   }
 
+  .img_acomodo img {
+    padding: 0;
+    margin: 0;
+    object-fit: cover;
+  }
 
- 
-  
+  div.acumulado {
+    left: 43%;
+  }
+
+  .acomodoart div {
+    padding: 0 15px;
+    margin: 0 auto;
+  }
+
+  .deleteboton {
+    margin-bottom: 20px;
+  }
+
+  .acomodochk div {
+    padding-top: 15px;
+  }
+}
+
+@media screen and (max-width: 410px) {
+  .acumulado {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+    grid-column-gap: 0;
+  }
+
+  div.acumulado {
+    top: 85%;
+    left: 42%;
+    text-align: center;
+    height: 150px;
+  }
+
+  .acomodoprecio {
+    grid-column: 1;
+    grid-row: 1; 
+  }
+
+  .totalinput {
+    grid-column: 1; /* Input total en la primera columna */
+    grid-row: 1; /* En la primera fila */
+  }
+
+  .acomodocom {
+    grid-column: 1; /* Botón de compra en la primera columna */
+    grid-row: 2; /* En la segunda fila */
+    margin-top: -10px;
+  }
+
+  .CartBtn {
+    width: 90%;
+    margin-top: -45px;
+  }
+}
+

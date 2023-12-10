@@ -7,10 +7,10 @@
     $cantidad= null;
 
 if (isset($_SESSION['usuario'])){    
-    $servidor='localhost';
+    $servidor='localhost:3307';
     $cuenta='root';
     $password='';
-    $bd='Store';
+    $bd='store';
     
     //conexion a la base de datos
     $conexion = new mysqli($servidor,$cuenta,$password,$bd);
@@ -170,11 +170,20 @@ if (isset($_SESSION['usuario'])){
                             }
                             ?>
                         </ul>
-                        <a href="php/login.php" class="navbar-nav">
-                            <span class="nav-link">
-                                <i class="fa-solid fa-user menuIcons"></i>
-                            </span>
-                        </a>
+                        <?php 
+                            if(!isset($_SESSION['usuario'])){?>
+                                <a href="php/login.php" class="navbar-nav">
+                                    <span class="nav-link">
+                                        <i class="fa-solid fa-user menuIcons"></i>
+                                    </span>
+                                </a>
+                        <?php }elseif(isset($_SESSION['usuario'])){ ?>
+                            <a href="php/logout.php" class="navbar-nav">
+                                <span class="nav-link">
+                                    <i class="fa-solid fa-right-from-bracket" style="color: #ffffff;"></i>
+                                </span>
+                            </a>
+                        <?php } ?>
                         <a href="php/carrito.php" class="navbar-nav">
                             <span class="nav-link">
                                 <i class="fa-solid fa-cart-shopping menuIcons"></i><sub><?php echo $cantidad ?></sub>
@@ -530,3 +539,20 @@ if (isset($_SESSION['usuario'])){
 </body>
 
 </html>
+
+<?php 
+    if(isset($_SESSION['logout'])){
+        ?>
+        <script>
+            Swal.fire({
+            icon: "success",
+            title: "Abandonarás tu sesión",
+            text: "¡Has cerrado sesión de tu cuenta!",
+            })
+        </script>
+        <?php 
+        unset($_SESSION['logout']);
+        unset($_SESSION['captcha']);
+        unset($_SESSION['intentos']);
+    }
+?>

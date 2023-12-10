@@ -8,10 +8,10 @@
     $encryption_key = "12345678901234567890123456789012"; 
     $iv = str_repeat("0", openssl_cipher_iv_length($cipher));
 
-    $serv = 'localhost';
+    $serv = 'localhost:3307';
     $cuenta = 'root';
     $contra = '';
-    $BaseD = 'Store';
+    $BaseD = 'store';
  
    //conexion con la base de datos 
     $conexion = new mysqli($serv,$cuenta,$contra,$BaseD);

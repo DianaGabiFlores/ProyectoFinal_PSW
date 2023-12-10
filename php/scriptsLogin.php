@@ -108,22 +108,5 @@
         <?php
         unset($_SESSION['mal']);
     }
-    if(isset($_SESSION['logout'])){
-        ?>
-        <script>
-            Swal.fire({
-            icon: "success",
-            title: "Abandonarás tu sesión",
-            text: "¡Has cerrado sesión de tu cuenta!",
-            }).then((result) => {
-            if (result.isConfirmed) {
-                location. assign('../index.php')
-            }});
-        </script>
-        <?php 
-        unset($_SESSION['logout']);
-        unset($_SESSION['captcha']);
-        unset($_SESSION['intentos']);
-    }
 ?>
 

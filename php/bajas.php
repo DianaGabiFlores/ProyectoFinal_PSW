@@ -24,7 +24,7 @@
                 <h1 id="tituloP">Bajas de productos</h1>
                 <?php
             
-                $servidor='localhost';
+                $servidor='localhost:3307';
                 $cuenta='root';
                 $password='';
                 $bd='store';

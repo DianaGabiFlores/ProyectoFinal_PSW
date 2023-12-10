@@ -70,10 +70,10 @@
   ?>
 
   <?php
-      $servidor='localhost:33065';
+      $servidor='llocalhost:3307';
       $cuenta='root';
       $password='';
-      $bd='suscritos';
+      $bd='store';
       
       //conexion a la base de datos
       $conexion = new mysqli($servidor,$cuenta,$password,$bd);

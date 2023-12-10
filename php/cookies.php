@@ -9,10 +9,10 @@
         $encryption_key = "12345678901234567890123456789012"; 
         $iv = str_repeat("0", openssl_cipher_iv_length($cipher));
 
-        $servidor='localhost';
+        $servidor='localhost:3307';
         $cuenta='root';
         $password='';
-        $bd='Store';
+        $bd='store';
          
         //conexion a la base de datos
         $conexion = new mysqli($servidor,$cuenta,$password,$bd);
@@ -156,12 +156,6 @@
 
             }
         }
-        header("Location: login.php");
-    }
-    if(isset($_POST["logout"])){
-        unset($_SESSION['usuario']);
-        unset($_SESSION['admin']);
-        $_SESSION['logout'] = true;
         header("Location: login.php");
     }
 

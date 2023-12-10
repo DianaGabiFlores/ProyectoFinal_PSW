@@ -20,6 +20,8 @@
         </script>
         <div class="d-flex flex-column contenido">
             <div>
+                <h1 id="tituloP">Tabla Ventas</h1>
+                <p id="tituloP">Historial de ventas de CandyCraze</p>
                 <?php
             
                 $servidor='localhost:33065';
@@ -35,64 +37,65 @@
                 if ($conexion->connect_errno){
                     die('Error en la conexion');
                 }else{
-                    $sql = 'select * from productovendidos';//hacemos cadena con la sentencia mysql que consulta todo el contenido de la tabla
-                    $resultado = $conexion -> query($sql); //aplicamos sentencia
+                    
+                    //vemos datos en un tabla de html
+                    $sql2 = 'SELECT p.idProducto, p.nombre, p.categoria, SUM(pv.cantidad) as totalCantidad FROM productos p JOIN productovendidos pv ON p.idProducto = pv.idProducto GROUP BY p.idProducto;';//hacemos cadena con la sentencia mysql que consulta todo el contenido de la tabla
+                    $resultado2 = $conexion -> query($sql2); //aplicamos sentencia
 
-                    if ($resultado -> num_rows){ //si la consulta genera registros
-                                while( $fila = $resultado -> fetch_assoc()){ //recorremos los registros obtenidos de la tabla
-                                    $idpedido = $fila['idPedido'];
-                                    $datosVendidos1[$fila['idProducto']] = $fila['cantidad'];
-                                    $cantidad = $fila['cantidad'];
-                                }
+                    if ($resultado2 -> num_rows){ //si la consulta genera registros
+                        echo '<div class="container tablaP">';
+                            echo '<table class="table table-hover">';
+                                echo '<tr class="table-secondary">';
+                                    echo '<th scope="col">IdProducto</th>';
+                                    echo '<th scope="col">Nombre</th>';
+                                    echo '<th scope="col">Categoría</th>';
+                                    echo '<th scope="col">Cantidad</th>';
+                                echo '</tr>';
+                                while( $fila2 = $resultado2 -> fetch_assoc()){ //recorremos los registros obtenidos de la tabla
+                                    echo '<tr>';
+                                        echo '<td>'. $fila2['idProducto'] . '</td>';
+                                        echo '<td>'. $fila2['nombre'] . '</td>';
+                                        echo '<td>'. $fila2['categoria'] . '</td>';
+                                        echo '<td>'. $fila2['totalCantidad'] . '</td>';
+                                        $idProducto = $fila2['idProducto'];
+                                        $nombre = $fila2['nombre'];
+                                        $categoria = $fila2['categoria'];
+                                        $cantidad = $fila2['totalCantidad'];
+                                        //array asociativo
+                                        $infoProd[$idProducto] = array(
+                                            'nombre' => $nombre,
+                                            'categoria' => $categoria,
+                                            'cantidad' => $cantidad
+                                        );
+                                    echo '</tr>';
+                                }   
+                            echo '</table>';
+                        echo '</div>';
                     }else{
-                        echo "<div class='alert alert-primary' id='tituloP' role='alert'>";
-                            echo "No hay productos vendidos";
-                        echo "</div>";
-                    }
-
-                    //continaumos con la consulta de datos a la tabla productos y sacamos sus datos como nombre y categoría
-                    $sql3 = 'select * from productos';//hacemos cadena con la sentencia mysql que consulta todo el contenido de la tabla
-                    $resultado3 = $conexion -> query($sql3); //aplicamos sentencia
-
-                    if ($resultado3 -> num_rows){ //si la consulta genera registros
-                        while( $fila3 = $resultado3 -> fetch_assoc()){ //recorremos los registros obtenidos de la tabla
-                            if (isset($datosVendidos1) && !empty($datosVendidos1)) {
-                                $auxId = $fila3['idProducto'];
-                                foreach ($datosVendidos1 as $id => $valor) {
-                                    if($auxId == $id){
-                                        //Array que contiene la info de todos los productos vendidos (id, nombre, categoría, cantidad)
-                                        $infoProd[$fila3['idProducto']] = array('nombre' => $fila3['nombre'],'categoria' => $fila3['categoria'], 'cantidad' => $valor);
-                                    }
-                                }
-                            } else {
-                                // El array asociativo está vacío
-                            }
-                        } 
-                    }else{
-                        echo "<div class='alert alert-primary' id='tituloP' role='alert'>";
-                            echo "No hay productos vendidos";
+                        echo "<br><div class='alert alert-primary' role='alert'>";
+                            echo "No se encontraron productos";
                         echo "</div>";
                     }
 
                     if (isset($infoProd) && !empty($infoProd)) {
                         //hacer la gráfica de productos vendidos
-                        echo '<h1 id="tituloP">Productos vendidos</h1>';
-                        echo '<p id="tituloP">Gráfica que muestra el nombre y la cantidad de productos que han sido vendidos</p>';
-                        graficaVendidos($infoProd);
-                        //Hacer gráfica de categorías
-                        echo '<br><br><h1 id="tituloP">Ventas por categoría</h1>';
-                        echo '<p id="tituloP">Gráfica que muestra el total de productos vendidos por cada categoría existente</p>';
-                        graficaCategorias($infoProd);
-                    }
+                       echo '<br><h1 id="tituloP">Productos vendidos</h1>';
+                         echo '<p id="tituloP">Gráfica que muestra el nombre y la cantidad de productos que han sido vendidos</p>';
+                         graficaVendidos($infoProd);
+                         //Hacer gráfica de categorías
+                         echo '<br><br><h1 id="tituloP">Ventas por categoría</h1>';
+                         echo '<p id="tituloP">Gráfica que muestra el total de productos vendidos por cada categoría existente</p>';
+                         graficaCategorias($infoProd);
+                     }
 
                 }//fin
                 // Recorrer y mostrar cada elemento del array asociativo
                 // foreach ($infoProd as $idProducto => $productoInfo) {
-                //     echo "ID del Producto: $idProducto<br>";
-                //     echo "Nombre: " . $productoInfo['nombre'] . "<br>";
-                //     echo "Categoría: " . $productoInfo['categoria'] . "<br>";
-                //     echo "Cantidad: " . $productoInfo['cantidad'] . "<br>";
-                //     echo "<hr>";
+                //      echo "ID del Producto: $idProducto<br>";
+                //      echo "Nombre: " . $productoInfo['nombre'] . "<br>";
+                //      echo "Categoría: " . $productoInfo['categoria'] . "<br>";
+                //      echo "Cantidad: " . $productoInfo['cantidad'] . "<br>";
+                //      echo "<hr>";
                 // }
                 ?>
             
@@ -101,7 +104,7 @@
             <div>
                 <?php
                     function graficaVendidos($info){
-                        echo '<div style="max-width: 80%;">';
+                        echo '<div style="max-width: 100%;">';
                         ?>
                         <canvas id="miGrafico"></canvas>
                         <script>
@@ -111,7 +114,7 @@
                             Math.floor(Math.random() * 256) + ',' + 
                             Math.floor(Math.random() * 256) + ', 0.2)';
                         }
-                        // Datos para el gráfico
+                        //datos para el gráfico
                         const datos = {
                             labels: [
                                 <?php
@@ -144,7 +147,7 @@
                                 borderWidth: 1
                             }]
                         };
-                        // Configuración del gráfico
+                        //configuración del gráfico
                         var opciones = {
                             responsive: true,
                             indexAxis: 'y',
@@ -159,11 +162,11 @@
                                 },
                                 y: {
                                     position: 'right',
-                                    reverse: true
+                                    reverse: true,
                                 }
                             }
                         };
-                        // Crear gráfico
+                        //crear gráfico
                             var ctx = document.getElementById("miGrafico").getContext("2d");
                             new Chart(ctx, {
                                 type: "bar",
@@ -206,7 +209,7 @@
                             Math.floor(Math.random() * 256) + ',' + 
                             Math.floor(Math.random() * 256) + ', 0.2)';
                         }
-                        // Datos para el gráfico
+                        //datos para el gráfico
                         const datos2 = {
                             labels: [
                                 'México','Japón', 'Corea','Otro'
@@ -231,7 +234,7 @@
                                 borderWidth: 1
                             }]
                         };
-                        // Configuración del gráfico
+                        //configuración del gráfico
                         var opciones2 = {
                             responsive: true,
                             indexAxis: 'y',
@@ -241,7 +244,7 @@
                                 }
                             }
                         };
-                        // Crear gráfico
+                        //crear gráfico
                             var ctx2 = document.getElementById("miGrafico2").getContext("2d");
                             new Chart(ctx2, {
                                 type: "pie",

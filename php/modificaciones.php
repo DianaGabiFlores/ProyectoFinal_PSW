@@ -28,7 +28,7 @@
                 $servidor = 'localhost:3307';
                 $cuenta = 'root';
                 $password = '';
-                $bd = 'tienda';
+                $bd = 'store';
                 
                 //conexión a la base de datos
                 $conexion = new mysqli($servidor, $cuenta, $password, $bd);

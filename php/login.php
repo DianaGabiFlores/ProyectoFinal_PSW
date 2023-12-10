@@ -93,23 +93,7 @@
             </form>
         </div>
         <?php 
-            }elseif(isset($_SESSION['usuario'])){ ?>
-                <script>document.getElementsByClassName("animate__animated animate__fadeInDown")[0].innerHTML = "— Cierra Sesión —";</script>
-                <div class="formlogin logoutform">
-                    <form class="form" action="cookies.php" method="POST">
-                        <h2>Cerrar Sesión</h2>
-                        <div class="linea"></div>
-                        <br>
-                        <div class="labelogout">
-                            <p class="rescate primera labelogout">¿Quieres salir de tu cuenta <b><?php echo $_SESSION['usuario'];?><b>?</p>
-                        </div>
-                        <div class="containerboton">
-                            <input class="boton btn btn-primary" type="submit" value="CERRAR SESIÓN" name="logout">
-                        </div>
-                    </form>
-                </div>
-        <?php 
-        }
+            }
         ?>
     </section>
     </main>

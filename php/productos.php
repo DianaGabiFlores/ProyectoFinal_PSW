@@ -66,7 +66,7 @@ function datos($conexion, $categorias, $num){
 <?php }
 }
 
-$servidor = 'localhost';
+$servidor = 'localhost:3307';
 $cuenta = 'root';
 $password = '';
 $bd = 'store';
@@ -131,8 +131,19 @@ if($conexion->connect_errno) {
             document.getElementsByClassName("animate__animated animate__fadeInDown")[0].innerHTML = "— Productos Candy Craze —";
             document.getElementsByClassName("animate__animated animate__fadeInUp")[0].innerHTML = "Disfruta de nuestra gran variedad de dulces";
         </script>
+        <div class="wave" style="height: 150px; overflow: hidden;"><svg viewBox="0 0 500 150" preserveAspectRatio="none"
+                style="height: 100%; width: 100%;">
+                <path d="M0.00,49.98 C150.00,150.00 349.20,-40.00 500.00,49.98 L500.00,150.00 L0.00,150.00 Z"
+                    style="stroke: none; fill: #FFFFFF"></path>
+            </svg></div>
     </header>
-
+    
+    <section class="preguntasTitle">
+        <h3>¡Los mejores dulces están en Candy Craze!</h3>
+        <h2>Productos</h2>
+        <div class="linea"></div>
+        <br>
+    </section>
     <!-- Filtro -->
     <div class="radioacomodo">
         <div class="radio-inputs">
@@ -332,7 +343,7 @@ function Agregar($agregar){ ?>
         confirmButtonColor: "#D8006C",    
         cancelButtonColor: "#3D0C11",          
         confirmButtonText: "Sí, agregar!",
-        cancelButtonText: "No agregar!",
+        cancelButtonText: "No agregar",
         reverseButtons: true
       }).then((result) => {
         if (result.isConfirmed) {

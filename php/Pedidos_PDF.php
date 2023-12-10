@@ -10,11 +10,9 @@
     <link rel="stylesheet" href="../css/styleRecibo.css">
 </head>
 <?php 
+    session_start();
+
     include("menu.php");
-    $servidor='localhost:3307';
-    $cuenta='root';
-    $password='';
-    $bd='store1';
      
     //conexion a la base de datos
     $conexion = new mysqli($servidor,$cuenta,$password,$bd);
