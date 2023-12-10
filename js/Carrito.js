@@ -22,7 +22,6 @@ finalizar.addEventListener('click', event => {
     var total_Boton = document.getElementsByClassName("total")[0];
     if(total_Boton.innerHTML == 0.00){
         event.preventDefault();
-        console.log(total_Boton.innerHTML);
     }
 });
 
